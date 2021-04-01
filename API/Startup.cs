@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using Infrastructure.Data;
 using Core.Interfaces;
 using Infrastructure.Data.Repositories;
+using API.Helpers;
 
 namespace API
 {
@@ -36,6 +37,8 @@ namespace API
             });
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddAutoMapper(typeof(MappingProfiles));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +54,7 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 
