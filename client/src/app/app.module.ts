@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { ShopModule } from './shop/shop.module';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { HomeComponent } from './home/home.component';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    ShopModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
