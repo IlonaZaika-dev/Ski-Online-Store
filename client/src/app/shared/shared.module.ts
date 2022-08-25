@@ -4,8 +4,6 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { PaginationHeaderComponent } from './components/pagination-header/pagination-header.component';
 import { PagerComponent } from './components/pager/pager.component';
 
-
-
 @NgModule({
   declarations: [
     PaginationHeaderComponent,

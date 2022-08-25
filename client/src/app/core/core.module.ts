@@ -6,12 +6,11 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { ErrorTestComponent } from './error-test/error-test.component';
 
 
-
 @NgModule({
   declarations: [NavBarComponent, ErrorPageComponent, ErrorTestComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule    
   ],
   exports: [
     NavBarComponent
