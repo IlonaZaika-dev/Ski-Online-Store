@@ -9,6 +9,8 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { HomeModule } from './home/home.module';
 import { ErrorInterceptor } from './shared/interceptors/error.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './shared/interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -22,13 +24,15 @@ import { ToastrModule } from 'ngx-toastr';
     CoreModule,
     PaginationModule.forRoot(),
     HomeModule,
+    NgxSpinnerModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
       preventDuplicates: true
     })
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
