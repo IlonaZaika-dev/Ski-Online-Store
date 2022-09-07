@@ -19,6 +19,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProduct();
+    this.brService.set('@productDetails', '');
   }
 
   getProduct() {
