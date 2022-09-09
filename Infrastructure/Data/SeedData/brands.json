@@ -1,26 +1,26 @@
 [
   {
     "Id": 1,
-    "Name": "Angular"
+    "Name": "Salomon"
   },
   {
     "Id": 2,
-    "Name": "NetCore"
+    "Name": "Burton"
   },
   {
     "Id": 3,
-    "Name": "VS Code"
+    "Name": "Atomic"
   },
   {
     "Id": 4,
-    "Name": "React"
+    "Name": "Fischer"
   },
   {
     "Id": 5,
-    "Name": "Typescript"
+    "Name": "Columbia"
   },
   {
     "Id": 6,
-    "Name": "Redis"
+    "Name": "K2"
   }
 ]

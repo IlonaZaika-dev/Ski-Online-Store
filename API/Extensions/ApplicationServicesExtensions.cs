@@ -12,9 +12,9 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddScoped(typeof(ICustomerBasketRepository, typeof(CustomerBasketRepository)));
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICustomerBasketRepository, CustomerBasketRepository>();
             services.AddAutoMapper(typeof(MappingProfiles));
 
             services.Configure<ApiBehaviorOptions>(options =>
