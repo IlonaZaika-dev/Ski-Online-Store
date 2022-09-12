@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'error-test', component: ErrorTestComponent, data: {breadcrumb: 'Test Errors'} },
   { path: 'error-page/:code', component: ErrorPageComponent, data: {breadcrumb: 'Error'} },
   { path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data: {breadcrumb: 'Shop'} },
+  { path: 'basket', loadChildren: () => import('./basket/basket.module').then(mod => mod.BasketModule), data: {breadcrumb: 'Basket'} },
   { path: '**', redirectTo: 'error-page/404', pathMatch: 'full'}
 ];
 
