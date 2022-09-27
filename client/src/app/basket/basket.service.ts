@@ -15,7 +15,7 @@ export class BasketService {
   private basketSource = new BehaviorSubject<IBasket>(null);
   basket$ = this.basketSource.asObservable();
   private basketTotalsSource = new BehaviorSubject<IBasketTotals>(null);
-  basketTotals$ = this.basketTotalsSource.asObservable();
+  basketTotal$ = this.basketTotalsSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
