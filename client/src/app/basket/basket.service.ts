@@ -49,6 +49,47 @@ export class BasketService {
     this.setBasket(basket);
   }
 
+  incrementItemQuantity(item: IBasketItem) {
+    const basket = this.getCurrentBasket();
+    const foundIndex = basket.items.findIndex(i => i.id === item.id);
+    basket.items[foundIndex].quantity++;
+    this.setBasket(basket);
+  }
+
+  decrementItemQuantity(item: IBasketItem) {
+    const basket = this.getCurrentBasket();
+    const foundIndex = basket.items.findIndex(i => i.id === item.id);
+    if (basket.items[foundIndex].quantity > 1) {
+      basket.items[foundIndex].quantity--;
+      this.setBasket(basket);
+    } else {
+      this.removeItemFromBasket(item);
+    }
+    
+  }
+
+  removeItemFromBasket(item: IBasketItem) {
+    const basket = this.getCurrentBasket();
+    if (basket.items.some(i => i.id === item.id)) {
+      basket.items = basket.items.filter(i => i.id !== item.id);
+      if (basket.items.length > 0) {
+        this.setBasket(basket);
+      } else {
+        this.deleteBasket(basket.id);
+      }
+    }
+  }
+
+  deleteBasket(id: string) {
+    return this.http.delete(this.baseUrl + 'basket?id=' + id).subscribe(() => {
+      this.basketSource.next(null);
+      this.basketTotalsSource.next(null);
+      localStorage.removeItem('basket_id');
+    }, error => {
+      console.log(error);
+    })
+  }
+
   private addOrUpdateItem(items: IBasketItem[], itemToAdd: IBasketItem, quantity: number): IBasketItem[] {
     const index = items.findIndex(i => i.id === itemToAdd.id);
     if (index === -1) {
