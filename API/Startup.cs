@@ -24,6 +24,7 @@ namespace API
         {
             services.AddControllers();
             services.AddApplicationServices();
+            services.AddIdentityServices(_config);
             services.AddSwaggerDocumentation();
             
             services.AddDbContext<StoreContext>(x => {
@@ -61,6 +62,8 @@ namespace API
             app.UseStaticFiles();
 
             app.UseCors("CorsPolicy");
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
