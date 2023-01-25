@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -15,6 +15,20 @@ export class AccountService {
   currentUser$ = this.currentUserSourse.asObservable();
 
   constructor(private http: HttpClient, private router: Router) { }
+
+  loadCurrentUser(token: string) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Authorization', `Bearer ${token}`);
+
+    return this.http.get(this.baseUrl + 'account', {headers}).pipe(
+      map((user: IUser) => {
+        if (user) {
+          localStorage.setItem('token', user.token);
+          this.currentUserSourse.next(user);
+        }
+      })
+    );
+  }
 
   login(params: any) {
     return this.http.post(this.baseUrl + 'account/login', params).pipe(
