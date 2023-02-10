@@ -4,16 +4,11 @@
             <div class="text-center mb-4">
                 <h1 class="h3 mb-3 fw-normal">Login</h1>
             </div>
-            <div class="form-label-group  mb-2">
-                <label for="inputEmail" class="sr-only">Email address</label>
-                <input formControlName="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-            </div>
-            <div class="form-label-group  mb-4">
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-            </div>
             
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <app-text-input [formControl]="loginForm.controls['email']" [label]="'Email address'"></app-text-input>
+            <app-text-input [formControl]="loginForm.controls['password']" [type]="'password'" [label]="'Password'"></app-text-input>
+
+            <button [disabled]="loginForm.invalid" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
     </div>
 </div>

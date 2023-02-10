@@ -21,4 +21,7 @@ export class NavBarComponent implements OnInit {
     this.currentUser$ = this.accountService.currentUser$;
   }
 
+  logout(): void {
+    this.accountService.logout();
+  }
 }
