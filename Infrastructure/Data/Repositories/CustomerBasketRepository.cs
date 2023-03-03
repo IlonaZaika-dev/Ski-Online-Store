@@ -7,10 +7,10 @@ using StackExchange.Redis;
 
 namespace Infrastructure.Data.Repositories
 {
-    public class CustomerBasketRepository : ICustomerBasketRepository
+    public class BasketRepository : IBasketRepository
     {
         private readonly IDatabase _database;
-        public CustomerBasketRepository(IConnectionMultiplexer redis)
+        public BasketRepository(IConnectionMultiplexer redis)
         {
             _database = redis.GetDatabase();
         }

@@ -62,12 +62,12 @@ namespace skinet.API.Controllers
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
         {
-            return Ok(await _productTypeRepo.GetAsync());
+            return Ok(await _productTypeRepo.GetListAsync());
         }
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
         {
-            return Ok(await _productBrandRepo.GetAsync());
+            return Ok(await _productBrandRepo.GetListAsync());
         }
     }
 }

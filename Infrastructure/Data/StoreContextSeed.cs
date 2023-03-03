@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Entities.OrderAggregate;
 using Microsoft.Extensions.Logging;
 
 namespace Infrastructure.Data
@@ -19,40 +20,33 @@ namespace Infrastructure.Data
                 {
                     var brandsData = File.ReadAllText("../Infrastructure/Data/SeedData/brands.json");
                     var brands = JsonSerializer.Deserialize<List<ProductBrand>>(brandsData);
-
-                    foreach(var brand in brands) 
-                    {
-                        context.ProductBrands.Add(brand);
-                    }
-
-                    await context.SaveChangesAsync();
+                    context.ProductBrands.AddRange(brands);
                 }
 
                 if (!context.ProductTypes.Any())
                 {
                     var productTypesData = File.ReadAllText("../Infrastructure/Data/SeedData/types.json");
                     var types = JsonSerializer.Deserialize<List<ProductType>>(productTypesData);
-
-                    foreach(var type in types) 
-                    {
-                        context.ProductTypes.Add(type);
-                    }
-
-                    await context.SaveChangesAsync();
+                    context.ProductTypes.AddRange(types);
                 }
 
                 if (!context.Products.Any())
                 {
                     var productsData = File.ReadAllText("../Infrastructure/Data/SeedData/products.json");
                     var products = JsonSerializer.Deserialize<List<Product>>(productsData);
+                    context.Products.AddRange(products);
+                }
 
-                    foreach(var product in products) 
-                    {
-                        context.Products.Add(product);
-                    }
+                if (!context.DeliveryMethods.Any())
+                {
+                    var deliveryData = File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
+                    var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryData);
+                    context.DeliveryMethods.AddRange(methods);
+                }
 
+                if (context.ChangeTracker.HasChanges()) 
+                {
                     await context.SaveChangesAsync();
-
                 }
             } 
             catch (Exception ex) 
