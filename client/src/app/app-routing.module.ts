@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'error-page/:code', component: ErrorPageComponent, data: {breadcrumb: 'Error'} },
   { path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data: {breadcrumb: 'Shop'} },
   { path: 'basket', loadChildren: () => import('./basket/basket.module').then(mod => mod.BasketModule), data: {breadcrumb: 'Basket'} },
+  { path: 'orders', loadChildren: () => import('./order/order.module').then(mod => mod.OrderModule), data: {breadcrumb: 'Order'} },
   { 
     path: 'checkout',
     canActivate: [AuthGuard],
