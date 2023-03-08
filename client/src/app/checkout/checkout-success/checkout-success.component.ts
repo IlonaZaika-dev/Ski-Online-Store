@@ -15,13 +15,12 @@ export class CheckoutSuccessComponent implements OnInit {
   
   constructor(private router: Router, public route: ActivatedRoute) {
     this.order = this.router.getCurrentNavigation().extras.state as Order;
-    console.log(this.order);
    }
 
   ngOnInit(): void {
-    this.currentState$ = this.route.paramMap.pipe(
-      map(() => window.history.state.order.queryParams)
-    ); 
+    // this.currentState$ = this.route.paramMap.pipe(
+    //   map(() => window.history.state.order.queryParams)
+    // ); 
   }
 
   viewOrder() {
