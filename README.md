@@ -1,5 +1,5 @@
 
-# E-Commerce Store
+# E-Commerce App
 
 Welcome to my study project! This project is build completely from scratch using the DotNet CLI and the Angular CLI to help me learn and practice new skills learning web development. 
 I'm going to keep using it as a learning project, improving it with new features.
